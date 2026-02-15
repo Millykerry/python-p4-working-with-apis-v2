@@ -30,7 +30,7 @@ class Search:
         URL = f"https://openlibrary.org/search.json?title={search_term_formatted}&fields={fields_formatted}&limit={limit}"
         print(URL)
         response = requests.get(URL)
-        return response.json()
+        return response.json()  # This turns the response into a dictionary!
 
     def get_user_search_results(self, search_term):
         search_term_formatted = search_term.replace(" ", "+")
@@ -45,13 +45,6 @@ class Search:
         return response_formatted
 
 
-# results = Search().get_search_results()
-# print(results)
-
-# results_json = Search().get_search_results_json()
-# print(json.dumps(results_json, indent=1))
-
-search_term = input("Enter a book title: ")
-result = Search().get_user_search_results(search_term)
-print("Search Result:\n")
-print(result)
+# Test it out!
+results_json = Search().get_search_results_json()
+print(json.dumps(results_json, indent=1))
